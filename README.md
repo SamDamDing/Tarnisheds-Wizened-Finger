@@ -2,9 +2,9 @@
 # But Hole
 ### Create Finger Messages like the ones in Elden Ring with Python
 
-Using `genPhrase1("r", "r", "r", "r", "r", "r", "r")` will generate a random phrase.
+Using `genPhrase("r", "r", "r", "r", "r", "r", "r")` will generate a random phrase.
 ```py
-genPhrase1(
+genPhrase(
   msgtype #Accepts values 0-3.
   msgtemplate, #Accepts values 0-24.
   msgword, #If the word is a valid word, like in Elden Ring, it will be used in the template. 
