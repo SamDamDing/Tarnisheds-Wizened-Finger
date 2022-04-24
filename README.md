@@ -56,3 +56,4 @@ genPhrase(
 - Command Line Arguments
 - Images for Gestures
 - Gui?
+- Discord bot?
