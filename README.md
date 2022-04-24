@@ -10,7 +10,7 @@ genPhrase1(
   msgconjunction = 'NA', #If valid and the msgtype necessitates a conjunction, it will be used.
   msgtemplate2 = 'NA', #Accepts values 0-24 if msgtype necessitates this.
   msgword2 = 'NA', #If the word is a valid word, like in Elden Ring, it will be used in the second template. 
-  msggesture = 'NA') #If you want to add a gesture, like in Elden Ring, type the name of the gesture in all caps and it will be used.
+  msggesture = 'NA') #If you want to add a gesture, like in Elden Ring, type the name of the gesture in all caps and it will be used. No image or animation. Just text
 ```
 # Message Types
 ```
@@ -53,4 +53,5 @@ genPhrase1(
 
 - Make all input integer based?
 - Command Line Arguments
+- Images for Gestures
 - Gui?
