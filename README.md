@@ -48,7 +48,9 @@ genPhrase1(
 23. $word?
 24. $word...
 ```
-To do:
-Make all input integer based?
-Command Line Arguments
-Gui?
+
+# To do:
+
+- Make all input integer based?
+- Command Line Arguments
+- Gui?
