@@ -1,5 +1,6 @@
-# Try Fingers But Hole
-Create Finger Messages like the ones in Elden Ring with Python
+# Try Fingers, 
+# But Hole
+### Create Finger Messages like the ones in Elden Ring with Python
 
 Using `genPhrase1("r","r","r",",","r","r","r")` will generate a random phrase.
 ```py
