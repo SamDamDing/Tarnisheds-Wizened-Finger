@@ -55,5 +55,4 @@ genPhrase1(
 - Make all input integer based?
 - Command Line Arguments
 - Images for Gestures
-- Output messages to a file?
 - Gui?
