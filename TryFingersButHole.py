@@ -3,10 +3,14 @@ from modules import genMsgType
 from modules import genTemplate
 from modules import genWord
 from modules import genConjunction
-msgHeader = "==========MESSAGE==========\n"
-msgFooter = "\n==========MESSAGE=========="
 
-def genPhrase1(msgtype, msgtemplate, msgword, msgconjunction = 'NA', msgtemplate2 = 'NA', msgword2 = 'NA', msggesture = 'NA'):
+logging = True
+msgHeader = "==========MESSAGE=========="
+msgFooter = "==========MESSAGE=========="
+
+def genPhrase(msgtype, msgtemplate, msgword, msgconjunction = 'NA', msgtemplate2 = 'NA', msgword2 = 'NA', msggesture = 'NA'):
+    if logging == True:
+        f = open("log.txt", "a")
     msgtype =        genMsgType(msgtype)
     msgtemplate =    genTemplate(msgtemplate)
     msgword =        genWord(msgtype, msgword)
@@ -25,34 +29,51 @@ def genPhrase1(msgtype, msgtemplate, msgword, msgconjunction = 'NA', msgtemplate
     print("msgword2: " + str(msgword2))
     """
     if msgtype == 0:
-        print(msgHeader + 
-        msgtemplate.substitute(word = msgword) + 
-        msgFooter)
+        Message =(
+            "\n" + msgHeader + 
+            "\n" + msgtemplate.substitute(word = msgword) + 
+            "\n" + msgFooter)
+        print(Message)
+        if logging == True:
+            f.write(Message)
     if msgtype == 1:
-        print(msgHeader + 
-        msgtemplate.substitute(word = msgword) + "\n" + 
-        msggesture + 
-        msgFooter)
+        Message = (
+            "\n" + msgHeader + 
+            "\n" + msgtemplate.substitute(word = msgword) +  
+            "\n" + msggesture + 
+            "\n" + msgFooter)
+        print(Message)
+        if logging == True:
+            f.write(Message)
     if msgtype == 2:
         if msgword2 == None:
             print("ERROR! Valid **** Second word needed for this message type")
             pass
         else:
-            print(msgHeader + 
-            msgtemplate.substitute(word = msgword) + 
-            msgconjunction + "\n" + 
-            msgtemplate2.substitute(word = msgword2) + 
-            msgFooter)
+            Message = (
+                "\n" + msgHeader + 
+                "\n" + msgtemplate.substitute(word = msgword) + 
+                msgconjunction + " " + 
+                msgtemplate2.substitute(word = msgword2) + 
+                "\n" + msgFooter)
+            print(Message)
+            if logging == True:
+                f.write(Message)
     if msgtype == 3:
         if msgword2 == None:
             print("ERROR! Valid Second **** word needed for this message type")
             pass
         else:
-            print(msgHeader + 
-            msgtemplate.substitute(word = msgword) + 
-            msgconjunction + "\n" + 
-            msgtemplate2.substitute(word = msgword2) + "\n" + 
-            msggesture +  
-            msgFooter)
-
-genPhrase1(0,"r","r",",","r","r","r")
+            Message = (
+                "\n" + msgHeader + 
+                "\n" + msgtemplate.substitute(word = msgword) + 
+                msgconjunction + " " +
+                msgtemplate2.substitute(word = msgword2) +   
+                "\n" + msggesture +  
+                "\n" + msgFooter)
+            print(Message)
+            if logging == True:
+                f.write(Message)
+    f.close()
+    
+genPhrase("r","r","r","r","r","r","r")
