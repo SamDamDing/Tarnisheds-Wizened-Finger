@@ -76,17 +76,18 @@ def genConjunction(msgtype, msgconjunction):
         if msgconjunction == "r":
             rc = random.randint(0,lc)
             #print(Conjunctions[rc])
-            return Conjunctions[rc]
+            rconj = str(Conjunctions[rc])
+            return rconj
         if msgconjunction == "NA":
-            pass
+            return ""
         if msgconjunction not in Conjunctions:
             print("Conjunction Invalid")
             print("Please Choose a Valid Conjunction")
             return "Conjunction Invalid"
-    else:
+    #else:
         #print("Conjunction are not needed for this Message Type")
         #print("Please Choose Another Message Type like 2 or 3")
-        return "NA"
+        #return "NA"
 
 def genGesture(msggesture):
     lg = len(Gestures)-1
@@ -139,11 +140,12 @@ def listGestures():
     y = -1
     for x in Gestures:
         y = y+1
-        print(str(y) + ". " + str(repr(x)))
-
+        #print(str(y) + ". " + str(repr(x)))
+        print("- " + "`" + str(repr(x)) + "`")
 def listWords():
     for item in Categories:
-        print("Word Category : {} \nWords : {}".format(str(repr(item)),str(repr(Categories[item]))) + "\n")
+        #print("Word Category : {} \nWords : {}".format(str(repr(item)),str(repr(Categories[item]))) + "\n")
+        print("{} \nWords : {}".format(str(repr(item)),str(repr(Categories[item]))) + "\n")
 
 #listTemplates()
 #listMessage_Types()
