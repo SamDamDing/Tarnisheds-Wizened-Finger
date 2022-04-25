@@ -1,9 +1,8 @@
 # Try Fingers
 # But Hole
-### Create Finger Messages like the ones in Elden Ring with Python.
-### Also can create a Discord bot.
+### A Discord bot to create random Finger Messages like the ones in Elden Ring with Python.
 
-Using `genPhrase("r", "r", "r", "r", "r", "r", "r")` will generate a random phrase.
+Using `genPhrase("r", "r", "r", "r", "r", "r", "r")` in `TryFingersButHole.py` will generate a random phrase. Can also change the args to generate a message.
 ```py
 genPhrase(
   msgtype #Accepts values 0-3.
@@ -186,6 +185,17 @@ genPhrase(
 "you don't have the right", 'are you ready?'
 ```
 # To do:
-
+- Appraisal reactions
+- Appraisal system
+- Appraisal rewards?
+- Add a limiter to prevent spam
+- Role permissions
+- Cleanup code
+- Transparent gesture images
+- Downscale gesture images (probably controlled by a variable)
+- User argument input (like `/fingers "r", "r", "r", "r", "r", "r", "r"`)
+- Add info about who ordered the message in the embed footer.
+- A method so that all messages must be sent in Fingers format. (Could be funny)
+- Fork this into a Twitch bot?
 - ~Images for Gestures~
 - ~Discord bot?~
