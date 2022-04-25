@@ -1,6 +1,7 @@
-# Try Fingers, 
+# Try Fingers
 # But Hole
-### Create Finger Messages like the ones in Elden Ring with Python
+### Create Finger Messages like the ones in Elden Ring with Python.
+### Also can create a Discord bot.
 
 Using `genPhrase("r", "r", "r", "r", "r", "r", "r")` will generate a random phrase.
 ```py
@@ -186,8 +187,5 @@ genPhrase(
 ```
 # To do:
 
-- Make all input integer based?
-- Command Line Arguments
-- Images for Gestures
-- Gui?
-- Discord bot?
+- ~Images for Gestures~
+- ~Discord bot?~
