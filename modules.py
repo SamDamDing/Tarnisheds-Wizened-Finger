@@ -5,6 +5,7 @@ from dicts import Message_Types
 from dicts import Templates
 from dicts import Categories
 from dicts import Gestures
+from dicts import Word_Categories
 
 def genMsgType(msgtype):
     if msgtype == "r":
@@ -103,3 +104,50 @@ def genGesture(msggesture):
             #print("Gesture is invalid")
             #print("Please try again")
             return "Gesture Invalid"
+
+"""
+These are some functions that list out all the possible parts of a message.
+"""
+
+y = -1
+
+def listTemplates():
+    y = -1
+    for x in Templates:
+        y=y+1
+        print(str(y) + ". " + str(repr(x).replace("$word", "****")))
+
+def listMessage_Types():
+    y = -1
+    for x in Message_Types:
+        y = y+1
+        print(str(y) + ". " + str(repr(x)))
+
+def listWord_Categories():
+    y = -1
+    for x in Word_Categories:
+        y = y+1
+        print(str(y) + ". " + str(repr(x)))
+
+def listConjunctions():
+    y = -1
+    for x in Conjunctions:
+        y = y+1
+        print(str(y) + ". " + str(repr(x)))
+
+def listGestures():
+    y = -1
+    for x in Gestures:
+        y = y+1
+        print(str(y) + ". " + str(repr(x)))
+
+def listWords():
+    for item in Categories:
+        print("Word Category : {} \nWords : {}".format(str(repr(item)),str(repr(Categories[item]))) + "\n")
+
+#listTemplates()
+#listMessage_Types()
+#listWord_Categories()
+#listConjunctions()
+#listGestures()
+#listWords()
