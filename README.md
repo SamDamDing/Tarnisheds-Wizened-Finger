@@ -192,10 +192,14 @@ genPhrase(
 - Role permissions
 - Cleanup code
 - Transparent gesture images
+- Make gestures gifs?
+- Personalized gesture images? That's a feasible stretch goal.
 - Downscale gesture images (probably controlled by a variable)
 - User argument input (like `/fingers "r", "r", "r", "r", "r", "r", "r"`)
 - Add info about who ordered the message in the embed footer.
 - A method so that all messages must be sent in Fingers format. (Could be funny)
+- Add ability to save messages and recall with seed. `/fingers save saved_message` and `/fingers write saved_message`. Could add a reaction button to save too.
 - Fork this into a Twitch bot?
+- Some kind of cross server message system like how messages can appear in a world from other players in their own world?
 - ~Images for Gestures~
 - ~Discord bot?~
