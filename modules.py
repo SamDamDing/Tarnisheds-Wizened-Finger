@@ -1,6 +1,6 @@
 import random
 from string import Template
-from dicts import Conjunctions
+from dicts import Conjunctions, NoNewLineConjunctions
 from dicts import Message_Types
 from dicts import Templates
 from dicts import Categories
@@ -71,8 +71,10 @@ def genConjunction(msgtype, msgconjunction):
     lc = len(Conjunctions)-1
     if msgtype == 2 or msgtype == 3:
         if msgconjunction in Conjunctions:
-            #print(msgconjunction)
-            return msgconjunction
+            if msgconjunction in NoNewLineConjunctions:
+                return msgconjunction
+            else:
+                return msgconjunction + "\n"
         if msgconjunction == "r":
             rc = random.randint(0,lc)
             #print(Conjunctions[rc])
