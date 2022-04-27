@@ -4,17 +4,9 @@ from modules import genTemplate
 from modules import genWord
 from modules import genConjunction
 
-import tkinter as tk
-from tkinter import Frame, ttk
-from tkinter.messagebox import showinfo
-from guiwindow import notebook
-from guiwindow import frame1
-from guiwindow import frame2
-from guiwindow import frame3
-from guiwindow import frame4
-from guiwindow import frame5
-from guiwindow import frame6
-from guiwindow import frame7
+logging = True
+msgHeader = ""
+msgFooter = ""
 
 class FingerMessage:
     def __init__(self):
@@ -23,14 +15,10 @@ class FingerMessage:
         self.Message = ""
         self.Gesture = ""
 
-logging = True
-#msgHeader = "==========MESSAGE==========\n" #You can adjust these to whatever you want, or remove them if you wish. 
-#msgFooter = "\n==========MESSAGE=========="
-msgHeader = ""
-msgFooter = ""
 def genPhrase(msgtype, msgtemplate, msgword, msgconjunction = 'NA', msgtemplate2 = 'NA', msgword2 = 'NA', msggesture = 'NA'):
     if logging == True:
         f = open("log.txt", "a")
+
     msgtype =        genMsgType(msgtype)
     msgtemplate =    genTemplate(msgtemplate)
     msgword =        genWord(msgtype, msgword)
@@ -61,6 +49,7 @@ def genPhrase(msgtype, msgtemplate, msgword, msgconjunction = 'NA', msgtemplate2
         if logging == True:
             f.write(Message)
         return Message
+
     if msgtype == 1:
         Message = (msgtemplate.substitute(word = msgword))
         Gesture = msggesture
@@ -73,6 +62,7 @@ def genPhrase(msgtype, msgtemplate, msgword, msgconjunction = 'NA', msgtemplate2
         if logging == True:
             f.write(Message)
         return Message, Gesture
+
     if msgtype == 2:
         if msgword2 == None:
             print("ERROR! Valid Second **** word needed for this message type")
@@ -88,6 +78,7 @@ def genPhrase(msgtype, msgtemplate, msgword, msgconjunction = 'NA', msgtemplate2
             if logging == True:
                 f.write(Message)
             return Message
+
     if msgtype == 3:
         if msgword2 == None:
             print("ERROR! Valid Second **** word needed for this message type")
@@ -107,6 +98,7 @@ def genPhrase(msgtype, msgtemplate, msgword, msgconjunction = 'NA', msgtemplate2
             if logging == True:
                 f.write(Message)
             return Message, Gesture
+
     f.close()
 
 genPhrase("r","r","r","r","r","r","r")
