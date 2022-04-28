@@ -71,3 +71,19 @@ links={
     "What Do You Want?": "Gestures/pngs/What Do You Want.png"}
 
 NoNewLineConjunctions=[","]
+
+MessageImageLinks = {
+    "Tier 0": "https://i.imgur.com/RFfXfnA.png",
+    "Tier 1": "https://i.imgur.com/ctjrSed.png",
+    "Tier 2": "https://i.imgur.com/74H4Rvm.png",
+    "Tier 3": "https://i.imgur.com/3tzOk6c.png",
+    "Tier 4": "https://i.imgur.com/Rci6Iad.png"
+}
+
+TierThresholds = {
+    "Tier 0": 0,
+    "Tier 1": 1,
+    "Tier 2": 2,
+    "Tier 3": 3,
+    "Tier 4": 4
+}
