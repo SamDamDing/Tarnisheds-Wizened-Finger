@@ -1,8 +1,4 @@
-from modules import genGesture
-from modules import genMsgType
-from modules import genTemplate
-from modules import genWord
-from modules import genConjunction
+from modules import genGesture, genMsgType, genTemplate, genWord, genConjunction
 
 class FingerMessage:
     def __init__(self):
