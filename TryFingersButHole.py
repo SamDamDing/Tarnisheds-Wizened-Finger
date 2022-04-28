@@ -2,7 +2,7 @@ from modules import genGesture, genMsgType, genTemplate, genWord, genConjunction
 
 class FingerMessage:
     def __init__(self):
-        genPhrase("r","r","r","r","r","r","r")
+        #genPhrase("r","r","r","r","r","r","r")
         self.Type = ""
         self.Message = ""
         self.Gesture = ""
