@@ -1,12 +1,6 @@
 import random
 from string import Template
-from dicts import Conjunctions, NoNewLineConjunctions
-from dicts import Message_Types
-from dicts import Templates
-from dicts import Categories
-from dicts import Gestures
-from dicts import Word_Categories
-
+from dicts import Conjunctions, NoNewLineConjunctions, Message_Types, Templates, Categories, Gestures, Word_Categories, TierThresholds
 def genMsgType(msgtype):
     if msgtype == "r":
         lm = len(Message_Types)-1
@@ -155,3 +149,14 @@ def listWords():
 #listConjunctions()
 #listGestures()
 #listWords()
+
+def thresholdcheck(appraisalcount):
+    values = []
+    for k, v in TierThresholds.items():
+        if appraisalcount >= int(v):
+            values.append(v)
+    values.sort()
+    y = values[-1]
+    for k,v in TierThresholds.items():
+        if y == v:
+            return k
