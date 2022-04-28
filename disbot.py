@@ -1,6 +1,8 @@
 import asyncio
+import time
 import discord
 import random
+from discord import utils
 from discord import Embed
 from discord.ext import commands
 from discord_slash import SlashCommand
@@ -26,26 +28,26 @@ appraisaltimeout = 30
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
 
+mess = ""
+embedmess = ""
+HAND = FingerMessage
+
 @client.event
 async def on_message(message):
     appraisalcount = 0
     currenttier = thresholdcheck(appraisalcount)
-    
     channel = message.channel
     if message.author == client.user:
         return
-
     if message.content.startswith('$fingers'):
         genPhrase("r","r","r","r","r","r","r")
-        HAND = FingerMessage
+        #HAND = FingerMessage
         fMsg = HAND.Message
         fGest = HAND.Gesture
         fType = HAND.Type
-        
         embedVar = discord.Embed(title = fMsgHeader, description = HAND.Message, color = 0x2a2823)
         embedVar.set_footer(text = fMsgFooter)
         embedVar.add_field(name="Appraisals: ", value=str(appraisalcount), inline=True)
-        
         try:
             file = discord.File(links.get(HAND.Gesture), filename="image.png")
             embedVar.set_image(url="attachment://image.png")
@@ -62,28 +64,43 @@ async def on_message(message):
             msgctx = await message.channel.send(embed=embedVar)
         for i in emoji_list:
             await msgctx.add_reaction(i)
-        await asyncio.sleep(5)
-        
-        message_1 = await msgctx.channel.fetch_message(msgctx.id)
-        tally = {x: 0 for x in emoji_list}
-        voters = []
-        for reaction in message_1.reactions:
-            if reaction.emoji in emoji_list:
-                reactors = await reaction.users().flatten()
-                for reactor in reactors:
-                    if reactor.id not in voters:
-                        if message_1.author != reactor:
-                            tally[reaction.emoji] += 1
-                            voters.append(reactor.id)
-                    await reaction.remove(reactor)
-        for x in voters:
-            appraisalcount =+ 1
-        currenttier = thresholdcheck(appraisalcount)
-        embedVar.set_thumbnail(url=str(MessageImageLinks.get(currenttier)))
-        embedVar.set_footer(text = fMsgFooter)
-        embedVar.set_field_at(index=0, name="Appraisals: ", value=str(appraisalcount), inline=True)
-        embed_1 = embedVar
-        await msgctx.edit(embed = embed_1)
-        print(fMsg)
+
+    mess = msgctx
+    id = msgctx.id
+    await asyncio.sleep(5)
+    message = await channel.fetch_message(id)
+    print(message.reactions)
+    voters = []
+    for reaction in message.reactions:
+        if reaction.emoji == "👍":
+            goodcount = reaction.count
+            goodusers = [gooduser async for gooduser in reaction.users()]
+            #print("Goodcount: " + str(goodcount))
+            for user in goodusers:
+                #print("Good Users: " + str(user.id))
+                if user.id not in voters:
+                    voters.append(user.id)
+                await message.remove_reaction(reaction, user)
+        if reaction.emoji == "👎":
+            badcount = reaction.count
+            badusers = [baduser async for baduser in reaction.users()]
+            #print("Badcount: " + str(badcount))
+            for user in badusers:
+                #print("Bad Users: " + str(user.id))
+                if user.id not in voters:
+                    voters.append(user.id)
+                await message.remove_reaction(reaction, user)
+    #for voter in voters:
+    #    print("Voter: " + str(voter))
+    appraisalcount = len(voters)-1
+    #print("Total Appraisals: " + str(appraisalcount))
+
+    currenttier = thresholdcheck(appraisalcount)
+    embedVar.set_thumbnail(url=str(MessageImageLinks.get(currenttier)))
+    embedVar.set_footer(text = fMsgFooter)
+    embedVar.set_field_at(index=0, name="Appraisals: ", value=str(appraisalcount), inline=True)
+    embed_1 = embedVar
+    await mess.edit(embed = embed_1)
+    #print(fMsg)
 
 client.run('Your Token Here')
