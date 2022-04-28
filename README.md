@@ -1,6 +1,7 @@
 # Try Fingers
 # But Hole
 ### A Discord bot to create random Finger Messages like the ones in Elden Ring with Python.
+### https://discord.com/api/oauth2/authorize?client_id=968116912196313169&permissions=536670108752&scope=bot
 
 Using `genPhrase("r", "r", "r", "r", "r", "r", "r")` in `TryFingersButHole.py` will generate a random phrase. Can also change the args to generate a message.
 ```py
