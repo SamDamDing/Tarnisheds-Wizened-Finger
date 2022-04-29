@@ -1,11 +1,10 @@
 import logging
-from genGesture import genGesture
 import asyncio
 import discord
 from discord.ext import commands
 from dicts import Conjunctions, Gestures, MessageImageLinks, links, Categories
 from TryFingersButHole import genTemplate
-from modules import genMsgType, phraser, thresholdcheck
+from modules import genMsgType, phraser, thresholdcheck, genGesture
 logging.basicConfig(filename='log.txt', encoding='utf-8', level=logging.DEBUG)
 
 intents = discord.Intents.all()
