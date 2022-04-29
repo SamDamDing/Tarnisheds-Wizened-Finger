@@ -1,6 +1,9 @@
 # Try Fingers
 # But Hole
+
 ### A Python based Discord bot to create Finger Messages like the ones in Elden Ring
+### Add: https://discord.com/api/oauth2/authorize?client_id=968116912196313169&permissions=536670108752&scope=bot
+
 
 Using `phraser("r", "r", "r", "r", "r", "r")` in `modules.py` will generate a random phrase.
 You can use `$fingers r r r r r r r r` to generate a random phrase in the discord chat.
