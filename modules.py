@@ -1,42 +1,41 @@
 import random
+from re import A
 from string import Template
 from dicts import Conjunctions, NoNewLineConjunctions, Message_Types, Templates, Categories, Gestures, Word_Categories, TierThresholds
 def genMsgType(msgtype):
-    if msgtype == "r":
-        lm = len(Message_Types)-1
-        msgtype = random.randint(0,lm)
-        return msgtype
-    if msgtype == 0:
-        return msgtype
-    if msgtype == 1:
-        return msgtype
-    if msgtype == 2:
-        return msgtype
-    if msgtype == 3:
-        return msgtype
-    else:
-        print("Message Type Invalid")
-        print("Please choose a number between 0 and 3")
-        return "Message Type Invalid"
+    if type(msgtype) == str:
+        if msgtype == "r":
+            lm = len(Message_Types)-1
+            msgtype = random.randint(0,lm)
+            return msgtype
+        if msgtype.isdigit() == True:
+            msgtype = int(msgtype)
+            print(type(msgtype))
+            genMsgType(msgtype)
+        else:
+            return NameError("Message Type Invalid. Please choose a number between 0 and 3")
+    if type(msgtype) == int:
+        if len(Message_Types)-len(Message_Types) <= msgtype <= len(Message_Types)-1:
+            return msgtype
+        else:
+            msgtype = "r"
+            return genMsgType(msgtype)
+            #return NameError("Message Type Invalid. Please choose a number between 0 and 3")
 
 def genTemplate(msgtemplate):
     lt = len(Templates)-1
     if msgtemplate == "r":
         rt = random.randint(0,lt)
-        msgtemplate = Template(Templates[rt])
-        #print(msgtemplate)
-        #print(lt)
-        return msgtemplate
+        msgtemplateTrue = Template(Templates[rt])
+        return msgtemplateTrue
     if msgtemplate == "NA":
         pass
     else:
-        try:
-            msgtemplate = Templates[msgtemplate]
-            #print(msgtemplate)
-            return msgtemplate
-        except:
-            #print("Template number is out of range")
-            #print("Try a number between 0 and " + str(lt))
+        if msgtemplate in Templates:
+            i = Templates.index(msgtemplate)
+            msgtemplateTrue = Template(Templates[i])
+            return msgtemplateTrue
+        else:
             return "Template Invalid"
 
 def genWord(msgtype, msgword):
@@ -48,58 +47,52 @@ def genWord(msgtype, msgword):
         msgword = Categories.get(rwordcat)[rw]
         return msgword
     if msgtype == 2 or msgtype == 3:
-        if msgword == "NA":
-            pass
-    else:
-        for x in Categories:
-            if msgword in Categories[x]:
-                valid = True
-        if valid == True:
+        try:
+            if msgword == "NA":
+                #print("NA: " + msgword)
+                pass
+            if any(msgword in val for val in Categories.values()) == True:
+                return msgword
+        except NameError:
+            print("Word Invalid")
+    if msgtype == 0 or msgtype == 1:
+        if any(msgword in val for val in Categories.values()) == True:
             return msgword
-        if valid != True:
-            #print("Your **** is invalid.")
-            #print("Please choose another")
-            return "Word Invalid"
 
 def genConjunction(msgtype, msgconjunction):
     lc = len(Conjunctions)-1
     if msgtype == 2 or msgtype == 3:
         if msgconjunction in Conjunctions:
             if msgconjunction in NoNewLineConjunctions:
-                return msgconjunction
-            else:
                 return msgconjunction + "\n"
+            else:
+                return " \n" + msgconjunction + " "
         if msgconjunction == "r":
             rc = random.randint(0,lc)
-            #print(Conjunctions[rc])
-            rconj = str(Conjunctions[rc])
-            return rconj
+            msgconjunction = str(Conjunctions[rc])
+            if msgconjunction in NoNewLineConjunctions:
+                return msgconjunction + "\n"
+            else:
+                return " \n" + msgconjunction + " "
         if msgconjunction == "NA":
             return ""
         if msgconjunction not in Conjunctions:
+            print(msgconjunction)
             print("Conjunction Invalid")
             print("Please Choose a Valid Conjunction")
             return "Conjunction Invalid"
-    #else:
-        #print("Conjunction are not needed for this Message Type")
-        #print("Please Choose Another Message Type like 2 or 3")
-        #return "NA"
 
 def genGesture(msggesture):
     lg = len(Gestures)-1
     if msggesture == "r":
         rg = random.randint(0,lg)
-        #print(Gestures[rg])
         return Gestures[rg]
     if msggesture == "NA":
         pass
     else:
         if msggesture in Gestures:
-            #print(msggesture)
             return msggesture
         else:
-            #print("Gesture is invalid")
-            #print("Please try again")
             return "Gesture Invalid"
 
 """
@@ -156,7 +149,26 @@ def thresholdcheck(appraisalcount):
         if appraisalcount >= int(v):
             values.append(v)
     values.sort()
-    y = values[-1]
-    for k,v in TierThresholds.items():
-        if y == v:
-            return k
+    if len(values)>0:
+        y = values[-1]
+        for k,v in TierThresholds.items():
+            if y == v:
+                return k
+
+def phraser(msgtype, msgtemplate, msgword, msgconjunction = 'NA', msgtemplate2 = 'NA', msgword2 = 'NA'):
+    msgtype =        genMsgType(msgtype)
+    msgtemplate =    genTemplate(msgtemplate)
+    msgword =        genWord(msgtype, msgword)
+    msgconjunction = genConjunction(msgtype, msgconjunction)
+    msgtemplate2 =   genTemplate(msgtemplate2)
+    msgword2 =       genWord(msgtype, msgword2)
+    
+    if (msgtype == 0 or msgtype == 1) and (msgword != None):
+        Message = (msgtemplate.substitute(word = msgword))
+        return Message
+    if (msgtype == 2 or msgtype == 3) and (msgword2 != None):
+        Message = (
+            msgtemplate.substitute(word = msgword) +
+            msgconjunction +
+            msgtemplate2.substitute(word = msgword2))
+        return Message
