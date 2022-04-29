@@ -1,116 +1,126 @@
 # Try Fingers
 # But Hole
-### A Discord bot to create random Finger Messages like the ones in Elden Ring with Python.
+### A Python based Discord bot to create Finger Messages like the ones in Elden Ring
 
-Using `genPhrase("r", "r", "r", "r", "r", "r", "r")` in `TryFingersButHole.py` will generate a random phrase. Can also change the args to generate a message.
+Using `phraser("r", "r", "r", "r", "r", "r")` in `modules.py` will generate a random phrase.
+You can use `$fingers r r r r r r r r` to generate a random phrase in the discord chat.
 ```py
-genPhrase(
+$fingers "Message Type", "Template", "Word", "Conjunction", "Template", "Word", "Gesture"
+```
+# Appraisal System
+By setting the `appraisaltimeout` variable in `main.py`, you can change how long the message will accept appraisals. At the end of the timeout, all unique non-bot user's reactions will be counted and the embed will be updated. All reactions will also be removed on the message. The amount of appraisals will determine the thumbnail image, just like how your message will appear brighter in game with more appraisals. The threshold values for this are set in `dicts.py` under `TierThresholds`
+
+![zXUGrmy 1](https://user-images.githubusercontent.com/45549722/165930675-be75bc56-9f3d-4387-89f9-d6407799e942.png)
+![WiVwEjk 1](https://user-images.githubusercontent.com/45549722/165930780-484da0f9-e0f8-4ac2-8d53-04b956a66052.png)
+
+
+```py
+phraser(
   msgtype #Accepts values 0-3.
   msgtemplate, #Accepts values 0-24.
   msgword, #If the word is a valid word, like in Elden Ring, it will be used in the template. 
   msgconjunction = 'NA', #If valid and the msgtype necessitates a conjunction, it will be used.
   msgtemplate2 = 'NA', #Accepts values 0-24 if msgtype necessitates this.
-  msgword2 = 'NA', #If the word is a valid word, like in Elden Ring, it will be used in the second template. 
-  msggesture = 'NA') #If you want to add a gesture, like in Elden Ring, type the name of the gesture in all caps and it will be used. No image or animation. Just text
+  msgword2 = 'NA') #If the word is a valid word, like in Elden Ring, it will be used in the second template. 
 ```
 # Message Types
-```
-0. Message
-1. Message and Gesture
-2. Message Conjunction Message
-3. Message Conjunction Message Gesture
-```
+
+- `0` Message
+- `1` Message and Gesture
+- `2` Message Conjunction Message
+- `3` Message Conjunction Message Gesture
+### Anything invalid will make the message type random.
+
 
 # Templates
-```
-0. $word ahead
-1. No $word ahead
-2. $word required ahead
-3. Be wary of $word
-4. Try $word
-5. Likely $word
-6. First off, $word
-7. Seek $word
-8. Still no $word...
-9. Why is it always $word?
-10. If only I had a $word...
-11. Didn't expect $word...
-12. Visions of $word...
-13. Could this be a $word?
-14. Time for $word
-15. $word, O $word
-16. Behold, $word!
-17. Offer $word
-18. Praise the $word
-19. Let there be $word
-20. Ahh, $word...
-21. $word
-22. $word!
-23. $word?
-24. $word...
-```
+- `"$word ahead"`
+- `"No $word ahead"`
+- `"$word required ahead"`
+- `"Be wary of $word"`
+- `"Try $word"`
+- `"Likely $word"`
+- `"First off, $word"`
+- `"Seek $word"`
+- `"Still no $word..."`
+- `"Why is it always $word?"`
+- `"If only I had a $word..."`
+- `"Didn't expect $word..."`
+- `"Visions of $word..."`
+- `"Could this be a $word?"`
+- `"Time for $word"`
+- `"$word, O $word"`
+- `"Behold, $word!"`
+- `"Offer $word"`
+- `"Praise the $word"`
+- `"Let there be $word"`
+- `"Ahh, $word..."`
+- `"$word"`
+- `"$word!"`
+- `"$word?"`
+- `"$word..."`
+
 # Conjunctions
-### Note: You must leave the `\n` as part of the message
-- `'\nand then '`
-- `'\nor '`
-- `'\nbut '`
-- `'\ntherefore '`
-- `'\nin short '`
-- `'\nexcept '`
-- `'\nby the way '`
-- `'\nso to speak '`
-- `'\nall the more '`
-- `',\n'`
+
+- `'and then'`
+- `'or'`
+- `'but'`
+- `'therefore'`
+- `'in short'`
+- `'except'`
+- `'by the way'`
+- `'so to speak'`
+- `'all the more'`
+- `','`
 
 # Gestures
 
-- `'AS YOU WISH'`
-- `'BALLED UP'`
-- `'BECKON'`
-- `'BOW'`
-- `'BRAVO!'`
-- `'BY MY SWORD'`
-- `'CALM DOWN!'`
-- `'CASUAL GREETING'`
-- `'CROSSED LEGS'`
-- `'CURTSY'`
-- `'DEJECTION'`
-- `'DESPERATE PRAYER'`
-- `'DOZING CROSS-LEGGED'`
-- `'ERUDITION'`
-- `'EXTREME REPENTANCE'`
-- `'FANCY SPIN'`
-- `'FINGER SNAP'`
-- `'FIRE SPUR ME'`
-- `'GOLDEN ORDER TOTALITY'`
-- `'GROVEL FOR MERCY'`
-- `'HEARTENING CRY'`
-- `"HOSLOW'S OATH"`
-- `'INNER ORDER'`
-- `'JUMP FOR JOY'`
-- `'MY LORD'`
-- `'MY THANKS'`
-- `'NOD IN THOUGHT'`
-- `'OUTER ORDER'`
-- `"PATCHES' CROUCH"`
-- `'POINT DOWNWARDS'`
-- `'POINT FORWARDS'`
-- `'POINT UPWARDS'`
-- `'POLITE BOW'`
-- `'PRAYER'`
-- `'RALLYING CRY'`
-- `'RAPTURE'`
-- `'REST'`
-- `'REVERENTIAL BOW'`
-- `'SITTING SIDEWAYS'`
-- `'SPREAD OUT'`
-- `'STRENGTH!'`
-- `'THE RING'`
-- `'TRIUMPHANT DELIGHT'`
-- `'WAIT!'`
-- `'WARM WELCOME'`
-- `'WAVE'`
-- `'WHAT DO YOU WANT?'`
+- `"As You Wish"`
+- `"Balled Up"`
+- `"Beckon"`
+- `"Bow"`
+- `"Bravo!"`
+- `"By My Sword"`
+- `"Calm Down!"`
+- `"Casual Greeting"`
+- `"Crossed Legs"`
+- `"Curtsy"`
+- `"Dejection"`
+- `"Desperate Prayer"`
+- `"Dozing Cross-Legged"`
+- `"Erudition"`
+- `"Extreme Repentance"`
+- `"Fancy Spin"`
+- `"Finger Snap"`
+- `"Fire Spur Me"`
+- `"Golden Order Totality"`
+- `"Grovel For Mercy"`
+- `"Heartening Cry"`
+- `"Hoslow'S Oath"`
+- `"Inner Order"`
+- `"Jump For Joy"`
+- `"My Lord"`
+- `"My Thanks"`
+- `"Nod In Thought"`
+- `"Outer Order"`
+- `"Patches' Crouch"`
+- `"Point Downwards"`
+- `"Point Forwards"`
+- `"Point Upwards"`
+- `"Polite Bow"`
+- `"Prayer"`
+- `"Rallying Cry"`
+- `"Rapture"`
+- `"Rest"`
+- `"Reverential Bow"`
+- `"Sitting Sideways"`
+- `"Spread Out"`
+- `"Strength!"`
+- `"The Ring"`
+- `"Triumphant Delight"`
+- `"Wait!"`
+- `"Warm Welcome"`
+- `"Wave"`
+- `"What Do You Want?"`
 
 # Words
 ### Enemies
@@ -185,17 +195,17 @@ genPhrase(
 "you don't have the right", 'are you ready?'
 ```
 # To do:
-- Appraisal reactions
-- Appraisal system
-- Appraisal rewards?
+- ~Appraisal reactions~
+- ~Appraisal system~
+- ~Appraisal rewards?~
 - Add a limiter to prevent spam
 - Role permissions
 - Cleanup code
-- Transparent gesture images
+- ~Transparent gesture images~
 - Make gestures gifs?
 - Personalized gesture images? That's a feasible stretch goal.
 - Downscale gesture images (probably controlled by a variable)
-- User argument input (like `/fingers "r", "r", "r", "r", "r", "r", "r"`)
+- ~User argument input (like `/fingers "r", "r", "r", "r", "r", "r", "r"`)~
 - Add info about who ordered the message in the embed footer.
 - A method so that all messages must be sent in Fingers format. (Could be funny)
 - Add ability to save messages and recall with seed. `/fingers save saved_message` and `/fingers write saved_message`. Could add a reaction button to save too.
