@@ -20,10 +20,10 @@ By setting the `appraisaltimeout` variable in `main.py`, you can change how long
 ```py
 phraser(
   msgtype #Accepts values 0-3.
-  msgtemplate, #Accepts values 0-24.
+  msgtemplate, #Accepts a templates.
   msgword, #If the word is a valid word, like in Elden Ring, it will be used in the template. 
   msgconjunction = 'NA', #If valid and the msgtype necessitates a conjunction, it will be used.
-  msgtemplate2 = 'NA', #Accepts values 0-24 if msgtype necessitates this.
+  msgtemplate2 = 'NA', #Accepts a template if msgtype necessitates this.
   msgword2 = 'NA') #If the word is a valid word, like in Elden Ring, it will be used in the second template. 
 ```
 # Message Types
