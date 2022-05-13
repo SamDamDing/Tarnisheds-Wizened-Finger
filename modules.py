@@ -58,7 +58,15 @@ def genWord(msgtype, msgword):
     if msgtype == 0 or msgtype == 1:
         if any(msgword in val for val in Categories.values()) == True:
             return msgword
-
+def genWordNew(msgword):
+    if msgword == "r":
+        rwordcat = random.choice(list(Categories))
+        lw = len(Categories.get(rwordcat))-1
+        rw = random.randint(0,lw)
+        msgword = Categories.get(rwordcat)[rw]
+        return msgword
+    if any(msgword in val for val in Categories.values()) == True:
+        return msgword
 def genConjunction(msgtype, msgconjunction):
     lc = len(Conjunctions)-1
     if msgtype == 2 or msgtype == 3:
@@ -81,7 +89,27 @@ def genConjunction(msgtype, msgconjunction):
             print("Conjunction Invalid")
             print("Please Choose a Valid Conjunction")
             return "Conjunction Invalid"
-
+def genConjunctionNew(msgconjunction):
+    lc = len(Conjunctions)-1
+    if msgconjunction in Conjunctions:
+        if msgconjunction in NoNewLineConjunctions:
+            return msgconjunction + "\n"
+        else:
+            return " \n" + msgconjunction + " "
+    if msgconjunction == "r":
+        rc = random.randint(0,lc)
+        msgconjunction = str(Conjunctions[rc])
+        if msgconjunction in NoNewLineConjunctions:
+            return msgconjunction + "\n"
+        else:
+            return " \n" + msgconjunction + " "
+    if msgconjunction == "NA":
+        return ""
+    if msgconjunction not in Conjunctions:
+        #print(msgconjunction)
+        #print("Conjunction Invalid")
+        #print("Please Choose a Valid Conjunction")
+        return "Conjunction Invalid"
 def genGesture(msggesture):
     lg = len(Gestures)-1
     if msggesture == "r":
