@@ -9,6 +9,7 @@ from string import Template
 import shelve
 from discord import app_commands
 
+
 appraisaltimeout = 10
 fMsgHeader = "Message:"
 fMsgFooter = "Source Code: https://tinyurl.com/TFBHFMG"
