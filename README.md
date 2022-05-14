@@ -2,19 +2,23 @@
 # But Hole
 
 ### A Python based Discord bot to create Finger Messages like the ones in Elden Ring
-### Add: https://discord.com/api/oauth2/authorize?client_id=968116912196313169&permissions=536670108752&scope=bot
-
+### Add: https://discord.com/api/oauth2/authorize?client_id=968116912196313169&permissions=8&scope=applications.commands%20bot
+### You may also have to give the bot the highest role in your server settings. This is probably because of the usage of app commands. idk tbh...
+### Use /fingers or /fingersmenu to access the message constructor.
 
 Using `phraser("r", "r", "r", "r", "r", "r")` in `modules.py` will generate a random phrase.
-You can use `$fingers r r r r r r r r` to generate a random phrase in the discord chat.
-```py
-$fingers "Message Type", "Template", "Word", "Conjunction", "Template", "Word", "Gesture"
-```
-# Appraisal System
-By setting the `appraisaltimeout` variable in `main.py`, you can change how long the message will accept appraisals. At the end of the timeout, all unique non-bot user's reactions will be counted and the embed will be updated. All reactions will also be removed on the message. The amount of appraisals will determine the thumbnail image, just like how your message will appear brighter in game with more appraisals. The threshold values for this are set in `dicts.py` under `TierThresholds`
 
-![zXUGrmy 1](https://user-images.githubusercontent.com/45549722/165930675-be75bc56-9f3d-4387-89f9-d6407799e942.png)
-![WiVwEjk 1](https://user-images.githubusercontent.com/45549722/165930780-484da0f9-e0f8-4ac2-8d53-04b956a66052.png)
+![H57wlQ2](https://user-images.githubusercontent.com/45549722/168424774-69f699d5-225a-4f09-a53d-2c955ef68381.png)
+![image](https://user-images.githubusercontent.com/45549722/168425086-03b5386f-9826-4084-ba9f-e06366b29588.png)
+
+
+You can use `/fingers` or `/fingersmenu` to display an ephemeral message constructor in the discord chat. You can click some buttons and dropdowns to set whatever message you want, use the `Save` button to save the message for later, use the `Load` button to load that saved message, `Reset` to reset the message constructor, `Random` to randomize the message constructor settings, and `Send` to send an embed of that constructed message along with a gesture if you so choose.
+
+
+# Appraisal System
+By setting the `appraisaltimeout` variable in `main.py`, you can change how long the message will accept appraisals. All unique user's appraisals will be counted and the embed will be updated. The amount of appraisals will determine the thumbnail image, just like how your message will appear brighter in game with more appraisals. The threshold values for this are set in `dicts.py` under `TierThresholds`
+
+
 
 
 ```py
@@ -201,17 +205,19 @@ phraser(
 - ~Appraisal reactions~
 - ~Appraisal system~
 - ~Appraisal rewards?~
+- ~Buttons and Dropdowns~
+- Server Settings
 - Add a limiter to prevent spam
 - Role permissions
 - Cleanup code
 - ~Transparent gesture images~
 - Make gestures gifs?
 - Personalized gesture images? That's a feasible stretch goal.
-- Downscale gesture images (probably controlled by a variable)
+- Downscale gesture images? (probably controlled by a variable)
 - ~User argument input (like `/fingers "r", "r", "r", "r", "r", "r", "r"`)~
 - Add info about who ordered the message in the embed footer.
 - A method so that all messages must be sent in Fingers format. (Could be funny)
-- Add ability to save messages and recall with seed. `/fingers save saved_message` and `/fingers write saved_message`. Could add a reaction button to save too.
+- ~Add ability to save messages and recall with seed. `/fingers save saved_message` and `/fingers write saved_message`. Could add a reaction button to save too.~
 - Fork this into a Twitch bot?
 - Some kind of cross server message system like how messages can appear in a world from other players in their own world?
 - ~Images for Gestures~
