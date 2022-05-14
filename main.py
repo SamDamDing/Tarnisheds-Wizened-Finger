@@ -1,15 +1,15 @@
 import random
 import discord
-from discord.ext import commands
-from discord.ui import Button,View,Select,modal
-from dicts import Conjunctions, Gestures, MessageImageLinks, links, Categories, Templates,EnemiesCat,PeopleCat,ThingsCat,Battle_TacticsCat,ActionsCat,SituationsCat,PlacesCat,DirectionsCat,Body_PartsCat,AffinitiesCat,ConceptsCat,PhrasesCat,Message_Types
-from modules import genConjunctionNew, genMsgType, genWordNew, phraser, thresholdcheck, genGesture, genTemplate,genConjunction,genWord
-from typing import List
-from string import Template
+from discord.ui import Button
+from dicts import Conjunctions, Gestures, MessageImageLinks, links, Categories, Templates
+from modules import genConjunctionNew, genWordNew, thresholdcheck, genGesture, genTemplate
 import shelve
 from discord import app_commands
 
-
+guild_ids = []
+guild_names =[]
+application_id="Your Application ID"
+#application_id=968116912196313169
 appraisaltimeout = 10
 fMsgHeader = "Message:"
 fMsgFooter = "Source Code: https://tinyurl.com/TFBHFMG"
@@ -45,23 +45,12 @@ for x in chunked_list:
         GesturesSplit.update({catname:x})
     gi +=1
 
-global selfcat
-global word
-global buttons
-global wordbuttonstr
-global word2
-word = "word"
-buttons = []
-word2=[]
-gesturelist=[]
-guild_ids = []
-guild_names =[]
-#TEST_GUILD = discord.Object(id=840071998599069696)
+
 
 class MyClient(discord.Client):
     def __init__(self) -> None:
         intents = discord.Intents.all()
-        super().__init__(application_id=968856972281675856, intents=intents)
+        super().__init__(application_id=application_id, intents=intents)
         self.tree = app_commands.CommandTree(self)
 
     async def on_ready(self):
@@ -74,9 +63,10 @@ class MyClient(discord.Client):
             guild_ids.append(id)
             guild_names.append(name)
             print(f'{name} : {id}')
-
-    async def setup_hook(self) -> None:
-        await self.tree.sync()
+            for x in guild_ids:
+                x=discord.Object(id=int(x))
+                await self.tree.sync(guild=x)
+            await self.tree.sync()
 
 """
 ====================
@@ -553,8 +543,21 @@ class MainMenu(discord.ui.View):
 
 client = MyClient()
 
-@client.tree.command(name = "Finger Message Generator", description="Try Fingers But Hole!")
+@client.tree.command(name = "fingers", description="Create Elden Ring Finger Messages!")
 async def fingers(interaction: discord.Interaction):
+    with shelve.open('UserMessageCache') as umc:
+            umc[str(interaction.user.id)] = [
+            "Template",
+            "Word",
+            "Conjunction",
+            "Template 2",
+            "Word 2",
+            "Gesture",]
+            umc.close()
+    await interaction.response.send_message(view=MainMenu(str(interaction.user.id)), ephemeral=True)
+
+@client.tree.command(name = "fingersmenu", description="Create Elden Ring Finger Messages!")
+async def fingersmenu(interaction: discord.Interaction):
     with shelve.open('UserMessageCache') as umc:
             umc[str(interaction.user.id)] = [
             "Template",
