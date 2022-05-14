@@ -5,12 +5,11 @@ from dicts import Conjunctions, Gestures, MessageImageLinks, links, Categories, 
 from modules import genConjunctionNew, genWordNew, thresholdcheck, genGesture, genTemplate
 import shelve
 from discord import app_commands
-
 guild_ids = []
 guild_names =[]
 application_id="Your Application ID"
 #application_id=968116912196313169
-appraisaltimeout = 10
+appraisaltimeout = 180
 fMsgHeader = "Message:"
 fMsgFooter = "Source Code: https://tinyurl.com/TFBHFMG"
 CategoriesSplit={}
@@ -44,8 +43,6 @@ for x in chunked_list:
         catname = ("Gestures") + str(" pt. " + str(gi))
         GesturesSplit.update({catname:x})
     gi +=1
-
-
 
 class MyClient(discord.Client):
     def __init__(self) -> None:
@@ -352,7 +349,7 @@ Embed Section
 ====================
 """
 class EmbedView(discord.ui.View):
-    def __init__(self, *, timeout = 180):
+    def __init__(self, *, timeout = appraisaltimeout):
         super().__init__(timeout=timeout)
         self.count = 0
         self.voters = []
