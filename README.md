@@ -1,16 +1,9 @@
-# Try Fingers
-# But Hole
-
 ### A Python based Discord bot to create Finger Messages like the ones in Elden Ring
 ### Add: https://discord.com/api/oauth2/authorize?client_id=968116912196313169&permissions=8&scope=applications.commands%20bot
 ### You may also have to give the bot the highest role in your server settings. This is probably because of the usage of app commands. idk tbh...
 ### Use /fingers or /fingersmenu to access the message constructor.
 
 Using `phraser("r", "r", "r", "r", "r", "r")` in `modules.py` will generate a random phrase.
-
-![H57wlQ2](https://user-images.githubusercontent.com/45549722/168424774-69f699d5-225a-4f09-a53d-2c955ef68381.png)
-![image](https://user-images.githubusercontent.com/45549722/168425086-03b5386f-9826-4084-ba9f-e06366b29588.png)
-
 
 You can use `/fingers` or `/fingersmenu` to display an ephemeral message constructor in the discord chat. You can click some buttons and dropdowns to set whatever message you want, use the `Save` button to save the message for later, use the `Load` button to load that saved message, `Reset` to reset the message constructor, `Random` to randomize the message constructor settings, and `Send` to send an embed of that constructed message along with a gesture if you so choose.
 
