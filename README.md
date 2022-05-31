@@ -7,6 +7,8 @@ Using `phraser("r", "r", "r", "r", "r", "r")` in `modules.py` will generate a ra
 
 You can use `/fingers` or `/fingersmenu` to display an ephemeral message constructor in the discord chat. You can click some buttons and dropdowns to set whatever message you want, use the `Save` button to save the message for later, use the `Load` button to load that saved message, `Reset` to reset the message constructor, `Random` to randomize the message constructor settings, and `Send` to send an embed of that constructed message along with a gesture if you so choose.
 
+![LR3ndo3](https://user-images.githubusercontent.com/45549722/171072063-0eab95bb-8333-4eba-a403-73eb6f4d8983.png)
+
 
 # Appraisal System
 By setting the `appraisaltimeout` variable in `main.py`, you can change how long the message will accept appraisals. All unique user's appraisals will be counted and the embed will be updated. The amount of appraisals will determine the thumbnail image, just like how your message will appear brighter in game with more appraisals. The threshold values for this are set in `dicts.py` under `TierThresholds`
